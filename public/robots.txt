@@ -34,4 +34,4 @@ User-agent: facebookexternalhit
 Allow: /
 
 # Sitemap
-Sitemap: https://random-generator-tools.vercel.app/sitemap.xml
+Sitemap: https://rastgeleolusturucu.com.tr/sitemap.xml

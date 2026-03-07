@@ -3,6 +3,8 @@ import { Space_Grotesk, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import Navigation from "@/components/Navigation";
 import SchemaMarkup from "@/components/SchemaMarkup";
+import BreadcrumbSchema from "@/components/BreadcrumbSchema";
+import LocalBusinessSchema from "@/components/LocalBusinessSchema";
 
 const spaceGrotesk = Space_Grotesk({
   variable: "--font-space-grotesk",
@@ -105,6 +107,8 @@ export default function RootLayout({
     <html lang="tr">
       <head>
         <SchemaMarkup type="WebApplication" />
+        <BreadcrumbSchema />
+        <LocalBusinessSchema />
       </head>
       <body
         className={`${spaceGrotesk.variable} ${jetbrainsMono.variable} antialiased font-mono bg-black`}
