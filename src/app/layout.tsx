@@ -106,6 +106,7 @@ export default function RootLayout({
   return (
     <html lang="tr">
       <head>
+        <meta name="google-site-verification" content="RX1idsObunkWfe57sJ-GbHhNH7-zXA6zIwmJLc_mVKM" />
         <SchemaMarkup type="WebApplication" />
         <BreadcrumbSchema />
         <LocalBusinessSchema />
