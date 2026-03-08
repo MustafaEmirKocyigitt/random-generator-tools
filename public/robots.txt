@@ -1,27 +1,6 @@
 User-agent: *
 Allow: /
 
-User-agent: GPTBot
-Allow: /
-
-User-agent: ChatGPT-User
-Allow: /
-
-User-agent: PerplexityBot
-Allow: /
-
-User-agent: ClaudeBot
-Allow: /
-
-User-agent: Google-Extended
-Allow: /
-
-User-agent: Bingbot
-Allow: /
-
-User-agent: Googlebot
-Allow: /
-
 User-agent: CCBot
 Disallow: /
 
@@ -31,11 +10,4 @@ Disallow: /
 User-agent: GoogleOther
 Disallow: /
 
-User-agent: FacebookBot
-Disallow: /
-
-User-agent: facebookexternalhit
-Allow: /
-
 Sitemap: https://rastgeleolusturucu.com.tr/sitemap.xml
-Sitemap: https://rastgeleolusturucu.com.tr/llms.txt
