@@ -23,8 +23,8 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Rastgele Oluşturucu - Ücretsiz Türkçe Rastgele Sayı, Şifre, İsim Üretici",
-  description: "Türkiye'nin en iyi rastgele araçları. Rastgele sayı üretici, şifre oluşturucu, isim generator, renk seçici ve picker. %100 ücretsiz, Türkçe, hızlı ve modern.",
+  title: "Rastgele Araçlar | Sayılar, İsimler, Şifreler | Ücretsiz",
+  description: "Rastgele sayılar, isimler, şifreler, renkler ve liste seçimleri anında üretin. 1000+ isim veritabanı, güvenli şifre üretimi ve 0.001ms hız ile 5 ücretsiz araç. Kayıt gerekmez.",
   keywords: ["rastgele sayı üretici", "şifre oluşturucu", "rastgele isim generator", "random password generator", "rastgele renk üretici", "random.org alternatifi", "türkçe rastgele araçlar", "ücretsiz random generator"],
   authors: [{ name: "Rastgele Oluşturucu", url: "https://rastgeleolusturucu.com.tr" }],
   alternates: {
