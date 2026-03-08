@@ -2,72 +2,73 @@ import { MetadataRoute } from 'next'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://rastgeleolusturucu.com.tr'
+  const currentDate = new Date()
   
   // Core pages
   const corePages = [
     {
       url: baseUrl,
-      lastModified: new Date('2024-03-07'),
+      lastModified: currentDate,
       changeFrequency: 'daily' as const,
       priority: 1,
     },
     {
       url: `${baseUrl}/rastgele-sayi`,
-      lastModified: new Date('2024-03-07'),
+      lastModified: currentDate,
       changeFrequency: 'weekly' as const,
       priority: 0.9,
     },
     {
       url: `${baseUrl}/sifre-olusturucu`,
-      lastModified: new Date('2024-03-07'),
+      lastModified: currentDate,
       changeFrequency: 'weekly' as const,
       priority: 0.9,
     },
     {
       url: `${baseUrl}/rastgele-isim`,
-      lastModified: new Date('2024-03-07'),
+      lastModified: currentDate,
       changeFrequency: 'weekly' as const,
       priority: 0.9,
     },
     {
       url: `${baseUrl}/rastgele-renk`,
-      lastModified: new Date('2024-03-07'),
+      lastModified: currentDate,
       changeFrequency: 'weekly' as const,
       priority: 0.9,
     },
     {
       url: `${baseUrl}/rastgele-secici`,
-      lastModified: new Date('2024-03-07'),
+      lastModified: currentDate,
       changeFrequency: 'weekly' as const,
       priority: 0.9,
     },
     {
       url: `${baseUrl}/alternatifler`,
-      lastModified: new Date('2024-03-07'),
+      lastModified: currentDate,
       changeFrequency: 'monthly' as const,
       priority: 0.8,
     },
     {
       url: `${baseUrl}/alternatif/random-org-alternatif`,
-      lastModified: new Date('2024-03-07'),
+      lastModified: currentDate,
       changeFrequency: 'monthly' as const,
       priority: 0.7,
     },
     {
       url: `${baseUrl}/alternatif/hesapmakinesi-com-tr-alternatif`,
-      lastModified: new Date('2024-03-07'),
+      lastModified: currentDate,
       changeFrequency: 'monthly' as const,
       priority: 0.7,
     },
     {
       url: `${baseUrl}/alternatif/randompassword-com-tr-alternatif`,
-      lastModified: new Date('2024-03-07'),
+      lastModified: currentDate,
       changeFrequency: 'monthly' as const,
       priority: 0.7,
     },
     {
       url: `${baseUrl}/hakkimizda`,
-      lastModified: new Date('2024-03-07'),
+      lastModified: currentDate,
       changeFrequency: 'yearly' as const,
       priority: 0.5,
     },
@@ -80,7 +81,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   
   const numberTemplatePages = numberTemplates.map(template => ({
     url: `${baseUrl}/rastgele-sayi/${template}`,
-    lastModified: new Date('2024-03-07'),
+    lastModified: currentDate,
     changeFrequency: 'weekly' as const,
     priority: 0.8,
   }))
@@ -92,7 +93,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   
   const passwordTemplatePages = passwordTemplates.map(template => ({
     url: `${baseUrl}/sifre-olusturucu/${template}`,
-    lastModified: new Date('2024-03-07'),
+    lastModified: currentDate,
     changeFrequency: 'weekly' as const,
     priority: 0.8,
   }))
@@ -104,7 +105,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   
   const nameTemplatePages = nameTemplates.map(template => ({
     url: `${baseUrl}/rastgele-isim/${template}`,
-    lastModified: new Date('2024-03-07'),
+    lastModified: currentDate,
     changeFrequency: 'weekly' as const,
     priority: 0.8,
   }))
@@ -120,7 +121,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const examplePages = exampleCategories.flatMap(category =>
     exampleSlugs[category as keyof typeof exampleSlugs].map(slug => ({
       url: `${baseUrl}/ornekler/${category}/${slug}`,
-      lastModified: new Date('2024-03-07'),
+      lastModified: currentDate,
       changeFrequency: 'monthly' as const,
       priority: 0.7,
     }))
