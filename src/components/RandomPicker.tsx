@@ -10,16 +10,21 @@ export default function RandomPicker() {
   const [newItem, setNewItem] = useState<string>('')
   const [result, setResult] = useState<string>('')
   const [isPicking, setIsPicking] = useState(false)
+  const [error, setError] = useState<string | null>(null)
 
   const handleAddItem = () => {
-    if (newItem.trim()) {
-      setItems([...items, newItem.trim()])
-      setNewItem('')
+    if (!newItem.trim()) {
+      setError('Lütfen eklemek için bir değer girin.')
+      return
     }
+    setItems([...items, newItem.trim()])
+    setNewItem('')
+    setError(null)
   }
 
   const handleRemoveItem = (index: number) => {
     setItems(items.filter((_, i) => i !== index))
+    setError(null)
   }
 
   const handlePick = () => {
@@ -28,6 +33,7 @@ export default function RandomPicker() {
       setTimeout(() => {
         setResult(pickRandomItem(items))
         setIsPicking(false)
+        setError(null)
       }, 800)
     }
   }
@@ -110,6 +116,11 @@ export default function RandomPicker() {
                   [EKLE]
                 </button>
               </div>
+              {error && (
+                <div className="mt-3 text-red-300 text-sm font-mono tracking-wide bg-red-500/10 border border-red-500/30 rounded-xl px-4 py-3" role="alert">
+                  {error}
+                </div>
+              )}
             </div>
             
             {/* Items list */}
@@ -172,7 +183,7 @@ export default function RandomPicker() {
                   <div className="text-xs text-green-400 mb-2 font-mono tracking-wider">
                     &gt; KUANTUM_SECIMI:
                   </div>
-                  <div className="text-3xl font-bold text-green-300 font-jetbrains-mono tracking-widest neon-glow glitch">
+                  <div className="text-3xl font-bold text-green-300 font-jetbrains-mono tracking-widest neon-glow glitch" aria-live="polite">
                     {result}
                   </div>
                   <div className="mt-4 flex justify-center space-x-2">

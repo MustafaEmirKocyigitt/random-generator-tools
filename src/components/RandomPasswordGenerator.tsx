@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useMemo, useState } from 'react'
 import { generateRandomPassword } from '@/lib/utils'
 import Breadcrumbs from './Breadcrumbs'
 import RelatedContent from './RelatedContent'
@@ -14,8 +14,45 @@ export default function RandomPasswordGenerator() {
   const [result, setResult] = useState<string>('')
   const [isGenerating, setIsGenerating] = useState(false)
   const [copied, setCopied] = useState<boolean>(false)
+  const [error, setError] = useState<string | null>(null)
+
+  const applyProfile = (profile: 'basic' | 'strong' | 'ultra') => {
+    if (profile === 'basic') {
+      setLength(8)
+      setIncludeUppercase(true)
+      setIncludeLowercase(true)
+      setIncludeNumbers(true)
+      setIncludeSymbols(false)
+    } else if (profile === 'strong') {
+      setLength(12)
+      setIncludeUppercase(true)
+      setIncludeLowercase(true)
+      setIncludeNumbers(true)
+      setIncludeSymbols(true)
+    } else {
+      setLength(16)
+      setIncludeUppercase(true)
+      setIncludeLowercase(true)
+      setIncludeNumbers(true)
+      setIncludeSymbols(true)
+    }
+    setResult('')
+    setCopied(false)
+    setError(null)
+  }
+
+  const validationError = useMemo(() => {
+    const hasSet = includeUppercase || includeLowercase || includeNumbers || includeSymbols
+    if (!hasSet) return 'En az bir karakter seti seçmelisiniz.'
+    if (length < 4 || length > 32) return 'Uzunluk 4-32 arasında olmalı.'
+    return null
+  }, [includeUppercase, includeLowercase, includeNumbers, includeSymbols, length])
 
   const handleGenerate = () => {
+    if (validationError) {
+      setError(validationError)
+      return
+    }
     setIsGenerating(true)
     setTimeout(() => {
       const config = {
@@ -30,6 +67,7 @@ export default function RandomPasswordGenerator() {
       setResult(password)
       setIsGenerating(false)
       setCopied(false)
+      setError(null)
     }, 600)
   }
 
@@ -110,6 +148,30 @@ export default function RandomPasswordGenerator() {
                 <span>32</span>
               </div>
             </div>
+
+            {validationError && (
+              <div className="text-red-300 text-sm font-mono tracking-wide bg-red-500/10 border border-red-500/30 rounded-xl px-4 py-3" role="alert">
+                {validationError}
+              </div>
+            )}
+
+            {/* Quick profiles */}
+            <div>
+              <label className="block text-sm font-medium text-purple-400 mb-3 font-mono tracking-wider">
+                &gt; HIZLI_PROFILLER:
+              </label>
+              <div className="grid grid-cols-3 gap-2">
+                {[{ key: 'basic', label: 'Temel' }, { key: 'strong', label: 'Güçlü' }, { key: 'ultra', label: 'Ultra' }].map((p) => (
+                  <button
+                    key={p.key}
+                    onClick={() => applyProfile(p.key as 'basic' | 'strong' | 'ultra')}
+                    className="py-2 px-3 bg-white/5 border border-purple-500/30 rounded-lg text-purple-200 text-xs font-mono hover:bg-white/10 transition-all duration-200"
+                  >
+                    {p.label}
+                  </button>
+                ))}
+              </div>
+            </div>
             
             {/* Character options */}
             <div className="space-y-3">
@@ -162,9 +224,9 @@ export default function RandomPasswordGenerator() {
             {/* Generate button */}
             <button
               onClick={handleGenerate}
-              disabled={isGenerating}
+              disabled={isGenerating || !!validationError}
               className={`w-full py-4 px-6 rounded-2xl font-bold text-lg transition-all duration-300 font-mono tracking-wider relative overflow-hidden group ${
-                isGenerating
+                isGenerating || validationError
                   ? 'bg-gray-800/50 text-gray-500 cursor-not-allowed border border-gray-700'
                   : 'bg-gradient-to-r from-purple-500 to-cyan-500 text-white hover:from-purple-400 hover:to-cyan-400 shadow-lg hover:shadow-2xl transform hover:-translate-y-1 border border-purple-400/50'
               }`}
@@ -205,6 +267,7 @@ export default function RandomPasswordGenerator() {
                           ? 'bg-green-500/20 text-green-400 border border-green-500/30'
                           : 'bg-purple-500/20 text-purple-300 border border-purple-500/30 hover:bg-purple-500/30'
                       }`}
+                      aria-live="polite"
                     >
                       {copied ? '[KOPYALANDI]' : '[KOPYALA]'}
                     </button>

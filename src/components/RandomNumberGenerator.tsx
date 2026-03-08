@@ -1,7 +1,7 @@
 'use client'
 
-import { useState } from 'react'
-import { generateRandomNumber } from '@/lib/utils'
+import { useMemo, useState } from 'react'
+import { generateGaussianNumber, generateRandomNumber } from '@/lib/utils'
 import Breadcrumbs from './Breadcrumbs'
 import RelatedContent from './RelatedContent'
 
@@ -10,24 +10,47 @@ export default function RandomNumberGenerator() {
   const [max, setMax] = useState<string>('100')
   const [result, setResult] = useState<number | null>(null)
   const [isGenerating, setIsGenerating] = useState(false)
+  const [error, setError] = useState<string | null>(null)
+  const [copyState, setCopyState] = useState<'idle' | 'success' | 'fail'>('idle')
+  const [distribution, setDistribution] = useState<'uniform' | 'gauss'>('uniform')
+
+  const validationError = useMemo(() => {
+    const minNum = parseInt(min)
+    const maxNum = parseInt(max)
+    if (isNaN(minNum) || isNaN(maxNum)) return 'Lütfen geçerli sayılar girin.'
+    if (minNum > maxNum) return 'Minimum değer maksimumdan büyük olamaz.'
+    return null
+  }, [min, max])
 
   const handleGenerate = () => {
+    if (validationError) {
+      setError(validationError)
+      return
+    }
     const minNum = parseInt(min)
     const maxNum = parseInt(max)
     
-    if (isNaN(minNum) || isNaN(maxNum)) {
-      return
-    }
-    
-    if (minNum > maxNum) {
-      return
-    }
-    
     setIsGenerating(true)
+    setError(null)
     setTimeout(() => {
-      setResult(generateRandomNumber(minNum, maxNum))
+      const generator = distribution === 'gauss' ? generateGaussianNumber : generateRandomNumber
+      setResult(generator(minNum, maxNum))
       setIsGenerating(false)
+      setCopyState('idle')
     }, 600)
+  }
+
+  const handleCopy = async () => {
+    if (result === null) return
+    try {
+      await navigator.clipboard.writeText(String(result))
+      setCopyState('success')
+      setTimeout(() => setCopyState('idle'), 1200)
+    } catch (err) {
+      console.error('copy failed', err)
+      setCopyState('fail')
+      setTimeout(() => setCopyState('idle'), 1200)
+    }
   }
 
   return (
@@ -91,8 +114,10 @@ export default function RandomNumberGenerator() {
                   type="number"
                   value={min}
                   onChange={(e) => setMin(e.target.value)}
-                  className="w-full px-4 py-3 bg-white/5 border border-cyan-500/30 rounded-xl text-cyan-300 font-mono placeholder-cyan-600 focus:outline-none focus:border-cyan-400 focus:ring-2 focus:ring-cyan-500/20 transition-all duration-300"
+                  className={`w-full px-4 py-3 bg-white/5 border rounded-xl text-cyan-300 font-mono placeholder-cyan-600 focus:outline-none focus:ring-2 focus:ring-cyan-500/20 transition-all duration-300 ${validationError ? 'border-red-400/60 focus:border-red-400 focus:ring-red-500/20' : 'border-cyan-500/30 focus:border-cyan-400'}`}
                   placeholder="Enter minimum value"
+                  aria-invalid={!!validationError}
+                  aria-describedby="number-range-error"
                 />
               </div>
               
@@ -104,18 +129,67 @@ export default function RandomNumberGenerator() {
                   type="number"
                   value={max}
                   onChange={(e) => setMax(e.target.value)}
-                  className="w-full px-4 py-3 bg-white/5 border border-cyan-500/30 rounded-xl text-cyan-300 font-mono placeholder-cyan-600 focus:outline-none focus:border-cyan-400 focus:ring-2 focus:ring-cyan-500/20 transition-all duration-300"
+                  className={`w-full px-4 py-3 bg-white/5 border rounded-xl text-cyan-300 font-mono placeholder-cyan-600 focus:outline-none focus:ring-2 focus:ring-cyan-500/20 transition-all duration-300 ${validationError ? 'border-red-400/60 focus:border-red-400 focus:ring-red-500/20' : 'border-cyan-500/30 focus:border-cyan-400'}`}
                   placeholder="Enter maximum value"
+                  aria-invalid={!!validationError}
+                  aria-describedby="number-range-error"
                 />
               </div>
             </div>
+            <div className="grid md:grid-cols-2 gap-4">
+              <div>
+                <label className="block text-sm font-medium text-cyan-400 mb-2 font-mono tracking-wider">
+                  &gt; DAGILIM_MODU:
+                </label>
+                <div className="flex space-x-2">
+                  {['uniform', 'gauss'].map((mode) => (
+                    <button
+                      key={mode}
+                      onClick={() => setDistribution(mode as 'uniform' | 'gauss')}
+                      className={`flex-1 py-2 px-3 rounded-lg font-mono text-xs border transition-all duration-300 ${
+                        distribution === mode
+                          ? 'bg-cyan-500/20 text-cyan-200 border-cyan-400 shadow-cyan-500/30 shadow'
+                          : 'bg-white/5 text-gray-400 border-cyan-500/20 hover:border-cyan-400/50 hover:text-cyan-300'
+                      }`}
+                    >
+                      {mode === 'uniform' ? 'UNIFORM' : 'GAUSS'}
+                    </button>
+                  ))}
+                </div>
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-cyan-400 mb-2 font-mono tracking-wider">
+                  &gt; HIZLI_SABLONLAR:
+                </label>
+                <div className="grid grid-cols-3 gap-2">
+                  {[{ label: '1-100', min: 1, max: 100 }, { label: '1-1000', min: 1, max: 1000 }, { label: '0-6', min: 0, max: 6 }].map((preset) => (
+                    <button
+                      key={preset.label}
+                      onClick={() => { setMin(String(preset.min)); setMax(String(preset.max)); setResult(null); setCopyState('idle'); setError(null); }}
+                      className="py-2 px-3 bg-white/5 border border-cyan-500/30 rounded-lg text-cyan-200 text-xs font-mono hover:bg-white/10 transition-all duration-200"
+                    >
+                      {preset.label}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            </div>
+            {validationError && (
+              <div
+                id="number-range-error"
+                className="text-red-300 text-sm font-mono tracking-wide bg-red-500/10 border border-red-500/30 rounded-xl px-4 py-3"
+                role="alert"
+              >
+                {validationError}
+              </div>
+            )}
             
             {/* Generate button */}
             <button
               onClick={handleGenerate}
-              disabled={isGenerating}
+              disabled={isGenerating || !!validationError}
               className={`w-full py-4 px-6 rounded-2xl font-bold text-lg transition-all duration-300 font-mono tracking-wider relative overflow-hidden group ${
-                isGenerating
+                isGenerating || validationError
                   ? 'bg-gray-800/50 text-gray-500 cursor-not-allowed border border-gray-700'
                   : 'bg-gradient-to-r from-cyan-500 to-purple-500 text-white hover:from-cyan-400 hover:to-purple-400 shadow-lg hover:shadow-2xl transform hover:-translate-y-1 border border-cyan-400/50'
               }`}
@@ -148,9 +222,18 @@ export default function RandomNumberGenerator() {
                   <div className="text-4xl font-bold text-cyan-300 font-jetbrains-mono tracking-widest neon-glow glitch">
                     {result}
                   </div>
-                  <div className="mt-4 flex justify-center space-x-2">
-                    <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                    <span className="text-green-400 text-xs font-mono">VALIDATED</span>
+                  <div className="mt-4 flex flex-col sm:flex-row items-center justify-center gap-3">
+                    <div className="flex items-center space-x-2">
+                      <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" aria-hidden="true"></div>
+                      <span className="text-green-400 text-xs font-mono">VALIDATED</span>
+                    </div>
+                    <button
+                      onClick={handleCopy}
+                      className="px-4 py-2 bg-cyan-600/80 hover:bg-cyan-500 text-white text-xs font-mono rounded-lg border border-cyan-400/50 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500/50"
+                      aria-live="polite"
+                    >
+                      {copyState === 'success' ? 'KOPYALANDI' : copyState === 'fail' ? 'KOPYALANAMADI' : 'KOPYALA'}
+                    </button>
                   </div>
                 </div>
               </div>

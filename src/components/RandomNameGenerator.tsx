@@ -9,13 +9,28 @@ export default function RandomNameGenerator() {
   const [gender, setGender] = useState<'male' | 'female' | 'mixed'>('mixed')
   const [result, setResult] = useState<string>('')
   const [isGenerating, setIsGenerating] = useState(false)
+  const [copyState, setCopyState] = useState<'idle' | 'success' | 'fail'>('idle')
 
   const handleGenerate = () => {
     setIsGenerating(true)
     setTimeout(() => {
       setResult(generateRandomName(gender))
       setIsGenerating(false)
+      setCopyState('idle')
     }, 600)
+  }
+
+  const handleCopy = async () => {
+    if (!result) return
+    try {
+      await navigator.clipboard.writeText(result)
+      setCopyState('success')
+      setTimeout(() => setCopyState('idle'), 1200)
+    } catch (err) {
+      console.error('copy failed', err)
+      setCopyState('fail')
+      setTimeout(() => setCopyState('idle'), 1200)
+    }
   }
 
   return (
@@ -146,9 +161,18 @@ export default function RandomNameGenerator() {
                   <div className="text-3xl font-bold text-cyan-300 font-jetbrains-mono tracking-widest neon-glow glitch">
                     {result}
                   </div>
-                  <div className="mt-4 flex justify-center space-x-2">
-                    <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                    <span className="text-green-400 text-xs font-mono">ACTIVE</span>
+                  <div className="mt-4 flex flex-col sm:flex-row justify-center items-center gap-3">
+                    <div className="flex items-center space-x-2">
+                      <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" aria-hidden="true"></div>
+                      <span className="text-green-400 text-xs font-mono">ACTIVE</span>
+                    </div>
+                    <button
+                      onClick={handleCopy}
+                      className="px-4 py-2 bg-cyan-600/80 hover:bg-cyan-500 text-white text-xs font-mono rounded-lg border border-cyan-400/50 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500/50"
+                      aria-live="polite"
+                    >
+                      {copyState === 'success' ? 'KOPYALANDI' : copyState === 'fail' ? 'KOPYALANAMADI' : 'KOPYALA'}
+                    </button>
                   </div>
                 </div>
               </div>

@@ -1,40 +1,21 @@
 'use client'
 
 import { useState } from 'react'
-import { generateRandomColor } from '@/lib/utils'
+import { generateColorPalette } from '@/lib/utils'
 import Breadcrumbs from './Breadcrumbs'
 import RelatedContent from './RelatedContent'
 
 export default function RandomColorGenerator() {
-  const [color, setColor] = useState<{ hex: string; rgb: string } | null>(null)
   const [isGenerating, setIsGenerating] = useState(false)
-  const [copiedHex, setCopiedHex] = useState(false)
-  const [copiedRgb, setCopiedRgb] = useState(false)
+  const [palette, setPalette] = useState<{ hex: string; rgb: string }[]>([])
+  const [paletteSize, setPaletteSize] = useState(5)
 
-  const handleGenerate = () => {
+  const handleGeneratePalette = () => {
     setIsGenerating(true)
     setTimeout(() => {
-      setColor(generateRandomColor())
+      setPalette(generateColorPalette(paletteSize))
       setIsGenerating(false)
-      setCopiedHex(false)
-      setCopiedRgb(false)
     }, 600)
-  }
-
-  const handleCopyHex = async () => {
-    if (color) {
-      await navigator.clipboard.writeText(color.hex)
-      setCopiedHex(true)
-      setTimeout(() => setCopiedHex(false), 2000)
-    }
-  }
-
-  const handleCopyRgb = async () => {
-    if (color) {
-      await navigator.clipboard.writeText(color.rgb)
-      setCopiedRgb(true)
-      setTimeout(() => setCopiedRgb(false), 2000)
-    }
   }
 
   return (
@@ -88,99 +69,76 @@ export default function RandomColorGenerator() {
           </div>
           
           <div className="space-y-6">
-            {/* Generate button */}
-            <button
-              onClick={handleGenerate}
-              disabled={isGenerating}
-              className={`w-full py-4 px-6 rounded-2xl font-bold text-lg transition-all duration-300 font-mono tracking-wider relative overflow-hidden group ${
-                isGenerating
-                  ? 'bg-gray-800/50 text-gray-500 cursor-not-allowed border border-gray-700'
-                  : 'bg-gradient-to-r from-pink-500 to-cyan-500 text-white hover:from-pink-400 hover:to-cyan-400 shadow-lg hover:shadow-2xl transform hover:-translate-y-1 border border-pink-400/50'
-              }`}
-            >
-              <span className="relative z-10">
-                {isGenerating ? (
-                  <span className="flex items-center justify-center">
-                    <svg className="animate-spin h-5 w-5 mr-2" viewBox="0 0 24 24">
-                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />
-                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
-                    </svg>
-                    [ISLENIYOR...]
-                  </span>
-                ) : (
-                  '[RENK_URET]'
-                )}
-              </span>
-              {!isGenerating && (
-                <div className="absolute inset-0 bg-gradient-to-r from-pink-500 to-cyan-500 opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
-              )}
-            </button>
-            
-            {/* Result display */}
-            {color && (
-              <div className="mt-8 space-y-4 slide-up">
-                {/* Color preview */}
-                <div className="relative">
-                  <div 
-                    className="w-full h-40 rounded-2xl border-2 border-pink-500/50 shadow-2xl shadow-pink-500/20 relative overflow-hidden color-preview"
-                    style={{ backgroundColor: color.hex }}
+            {/* Palette controls */}
+            <div className="space-y-3">
+              <label className="block text-sm font-medium text-pink-400 font-mono tracking-wider">
+                &gt; PALET_BOYUTU: {paletteSize}
+              </label>
+              <div className="flex space-x-2">
+                {[3, 5, 8].map((n) => (
+                  <button
+                    key={n}
+                    onClick={() => setPaletteSize(n)}
+                    className={`flex-1 py-2 px-3 rounded-lg text-xs font-mono border transition-all duration-200 ${
+                      paletteSize === n
+                        ? 'bg-pink-500/20 text-pink-200 border-pink-400'
+                        : 'bg-white/5 text-gray-400 border-pink-500/30 hover:border-pink-400/60 hover:text-pink-200'
+                    }`}
                   >
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
-                    <div className="absolute bottom-2 left-2 text-xs font-mono text-white/80 bg-black/50 px-2 py-1 rounded">
-                      ONIZLEME_AKTIF
-                    </div>
-                  </div>
-                </div>
-                
-                {/* Color values */}
-                <div className="space-y-3">
-                  <div className="backdrop-blur-lg bg-white/5 border border-pink-500/30 rounded-xl p-4">
-                    <div className="flex items-center justify-between">
-                      <div>
-                        <div className="text-xs text-pink-400 font-mono mb-1">&gt; HEX_KODU:</div>
-                        <div className="font-jetbrains-mono font-bold text-pink-300 neon-glow glitch">
-                          {color.hex}
-                        </div>
+                    {n}
+                  </button>
+                ))}
+              </div>
+              <button
+                onClick={handleGeneratePalette}
+                disabled={isGenerating}
+                className={`w-full py-4 px-6 rounded-2xl font-bold text-lg transition-all duration-300 font-mono tracking-wider relative overflow-hidden group ${
+                  isGenerating
+                    ? 'bg-gray-800/50 text-gray-500 cursor-not-allowed border border-gray-700'
+                    : 'bg-gradient-to-r from-pink-500 to-cyan-500 text-white hover:from-pink-400 hover:to-cyan-400 shadow-lg hover:shadow-2xl transform hover:-translate-y-1 border border-pink-400/50'
+                }`}
+              >
+                <span className="relative z-10">
+                  {isGenerating ? (
+                    <span className="flex items-center justify-center">
+                      <svg className="animate-spin h-5 w-5 mr-2" viewBox="0 0 24 24">
+                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />
+                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
+                      </svg>
+                      [PALET_URETILIYOR...]
+                    </span>
+                  ) : (
+                    '[PALET_URET]'
+                  )}
+                </span>
+                {!isGenerating && (
+                  <div className="absolute inset-0 bg-gradient-to-r from-pink-500 to-cyan-500 opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
+                )}
+              </button>
+            </div>
+
+            {/* Palette display */}
+            {palette.length > 0 && (
+              <div className="mt-8 space-y-4 slide-up">
+                <div className="text-sm text-pink-300 font-mono">&gt; URETILEN_PALET ({palette.length})</div>
+                <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
+                  {palette.map((c, idx) => (
+                    <div key={idx} className="p-3 bg-white/5 border border-pink-500/20 rounded-xl space-y-2">
+                      <div className="h-16 rounded-lg border border-pink-500/30" style={{ backgroundColor: c.hex }}></div>
+                      <div className="flex items-center justify-between text-xs text-pink-200 font-mono">
+                        <span>{c.hex}</span>
+                        <button
+                          onClick={async () => {
+                            await navigator.clipboard.writeText(c.hex)
+                          }}
+                          className="px-2 py-1 bg-pink-500/20 border border-pink-500/40 rounded-md hover:bg-pink-500/30 transition-colors"
+                        >
+                          Kopyala
+                        </button>
                       </div>
-                      <button
-                        onClick={handleCopyHex}
-                        className={`px-4 py-2 rounded-xl font-mono text-sm transition-all duration-300 ${
-                          copiedHex
-                            ? 'bg-green-500/20 text-green-400 border border-green-500/30'
-                            : 'bg-pink-500/20 text-pink-300 border border-pink-500/30 hover:bg-pink-500/30'
-                        }`}
-                      >
-                        {copiedHex ? '[KOPYALANDI]' : '[KOPYALA]'}
-                      </button>
+                      <div className="text-xs text-pink-200 font-mono">{c.rgb}</div>
                     </div>
-                  </div>
-                  
-                  <div className="backdrop-blur-lg bg-white/5 border border-pink-500/30 rounded-xl p-4">
-                    <div className="flex items-center justify-between">
-                      <div>
-                        <div className="text-xs text-pink-400 font-mono mb-1">&gt; RGB_DEGERLERI:</div>
-                        <div className="font-jetbrains-mono font-bold text-pink-300 neon-glow glitch">
-                          {color.rgb}
-                        </div>
-                      </div>
-                      <button
-                        onClick={handleCopyRgb}
-                        className={`px-4 py-2 rounded-xl font-mono text-sm transition-all duration-300 ${
-                          copiedRgb
-                            ? 'bg-green-500/20 text-green-400 border border-green-500/30'
-                            : 'bg-pink-500/20 text-pink-300 border border-pink-500/30 hover:bg-pink-500/30'
-                        }`}
-                      >
-                        {copiedRgb ? '[KOPYALANDI]' : '[KOPYALA]'}
-                      </button>
-                    </div>
-                  </div>
-                </div>
-                
-                {/* Status indicator */}
-                <div className="flex justify-center space-x-2">
-                  <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                  <span className="text-green-400 text-xs font-mono">RENK_ISLENDI</span>
+                  ))}
                 </div>
               </div>
             )}
