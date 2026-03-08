@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server'
 
-export function GET() {
+export default function GET() {
   const baseUrl = 'https://rastgeleolusturucu.com.tr'
   const currentDate = new Date().toISOString().split('T')[0] // YYYY-MM-DD format
   
