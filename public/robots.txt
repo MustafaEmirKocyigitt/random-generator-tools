@@ -1,12 +1,6 @@
-# AI SEO Optimized Robots.txt
-# Allows AI search engines while blocking training-only crawlers
-
-# Allow all search engines by default
 User-agent: *
 Allow: /
-Crawl-delay: 1
 
-# AI Search Engines - Allow for citation and visibility
 User-agent: GPTBot
 Allow: /
 
@@ -28,7 +22,6 @@ Allow: /
 User-agent: Googlebot
 Allow: /
 
-# Block training-only crawlers (prevents AI training without citation benefit)
 User-agent: CCBot
 Disallow: /
 
@@ -44,8 +37,5 @@ Disallow: /
 User-agent: facebookexternalhit
 Allow: /
 
-# Sitemap for search engines
 Sitemap: https://rastgeleolusturucu.com.tr/sitemap.xml
-
-# LLM Documentation
 Sitemap: https://rastgeleolusturucu.com.tr/llms.txt
