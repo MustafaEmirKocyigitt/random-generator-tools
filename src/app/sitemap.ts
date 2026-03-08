@@ -2,7 +2,7 @@ import { MetadataRoute } from 'next'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://rastgeleolusturucu.com.tr'
-  const currentDate = new Date()
+  const currentDate = new Date().toISOString().split('T')[0] // YYYY-MM-DD format
   
   // Core pages
   const corePages = [
