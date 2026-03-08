@@ -1,5 +1,25 @@
 @import "tailwindcss";
 
+/* Performance optimizations */
+@layer base {
+  /* Preload critical fonts */
+  @font-face {
+    font-family: 'Space Grotesk';
+    font-style: normal;
+    font-weight: 300 400 500 700;
+    font-display: swap;
+    src: url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&display=swap');
+  }
+  
+  @font-face {
+    font-family: 'JetBrains Mono';
+    font-style: normal;
+    font-weight: 400 700;
+    font-display: swap;
+    src: url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap');
+  }
+}
+
 :root {
   /* Enhanced Cyberpunk Palette - WCAG AA Compliant */
   --color-primary: #0A0A0A;
@@ -32,7 +52,7 @@
   --blur-lg: 12px;
 }
 
-@theme inline {
+@theme {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-space-grotesk);
@@ -156,6 +176,13 @@ body {
 .stagger-2 { animation-delay: 0.1s; }
 .stagger-3 { animation-delay: 0.15s; }
 
+/* Animation delay utilities */
+.animation-delay-1s { animation-delay: 1s; }
+.animation-delay-2s { animation-delay: 2s; }
+.animation-delay-3s { animation-delay: 3s; }
+.animation-delay-4s { animation-delay: 4s; }
+.animation-delay-5s { animation-delay: 5s; }
+
 /* Accessibility focus states */
 .focus-visible:focus {
   outline: 2px solid var(--color-focus);
@@ -217,6 +244,8 @@ body::before {
     );
   pointer-events: none;
   z-index: -1;
+  will-change: transform;
+  transform: translateZ(0);
 }
 
 /* Simplified grid overlay */
@@ -234,6 +263,8 @@ body::after {
   pointer-events: none;
   z-index: -1;
   animation: scanlines 15s linear infinite;
+  will-change: transform;
+  transform: translateZ(0);
 }
 
 /* Enhanced reduced motion support */
@@ -273,3 +304,44 @@ body::after {
     --color-border: rgba(0, 255, 255, 0.8);
   }
 }
+
+/* Performance optimizations */
+.lazy-load {
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.lazy-load.loaded {
+  opacity: 1;
+}
+
+/* Image optimization */
+img {
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+  image-rendering: pixelated;
+}
+
+/* GPU acceleration for animations */
+.gpu-accelerated {
+  transform: translateZ(0);
+  will-change: transform;
+}
+
+/* Content visibility for performance */
+.content-visibility-auto {
+  content-visibility: auto;
+  contain-intrinsic-size: 0 500px;
+}
+
+/* Dynamic width utilities */
+.strength-bar-10 { width: 10%; }
+.strength-bar-20 { width: 20%; }
+.strength-bar-30 { width: 30%; }
+.strength-bar-40 { width: 40%; }
+.strength-bar-50 { width: 50%; }
+.strength-bar-60 { width: 60%; }
+.strength-bar-70 { width: 70%; }
+.strength-bar-80 { width: 80%; }
+.strength-bar-90 { width: 90%; }
+.strength-bar-100 { width: 100%; }

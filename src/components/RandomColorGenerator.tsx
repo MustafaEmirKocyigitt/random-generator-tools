@@ -42,7 +42,7 @@ export default function RandomColorGenerator() {
       {/* Animated background elements */}
       <div className="absolute inset-0">
         <div className="absolute top-20 left-20 w-72 h-72 bg-cyan-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse"></div>
-        <div className="absolute bottom-20 right-20 w-72 h-72 bg-purple-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse" style={{ animationDelay: '2s' }}></div>
+        <div className="absolute bottom-20 right-20 w-72 h-72 bg-purple-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse animation-delay-2s"></div>
       </div>
       
       <div className="max-w-4xl w-full relative z-10">
@@ -122,7 +122,7 @@ export default function RandomColorGenerator() {
                 {/* Color preview */}
                 <div className="relative">
                   <div 
-                    className="w-full h-40 rounded-2xl border-2 border-pink-500/50 shadow-2xl shadow-pink-500/20 relative overflow-hidden"
+                    className="w-full h-40 rounded-2xl border-2 border-pink-500/50 shadow-2xl shadow-pink-500/20 relative overflow-hidden color-preview"
                     style={{ backgroundColor: color.hex }}
                   >
                     <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
@@ -259,7 +259,7 @@ export default function RandomColorGenerator() {
         
         {/* Floating elements */}
         <div className="absolute -top-4 -right-4 w-8 h-8 bg-cyan-500 rounded-full opacity-60 animate-pulse"></div>
-        <div className="absolute -bottom-4 -left-4 w-6 h-6 bg-purple-500 rounded-full opacity-60 animate-pulse" style={{ animationDelay: '1s' }}></div>
+        <div className="absolute -bottom-4 -left-4 w-6 h-6 bg-purple-500 rounded-full opacity-60 animate-pulse animation-delay-1s"></div>
       </div>
     </div>
   )

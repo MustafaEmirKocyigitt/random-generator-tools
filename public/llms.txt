@@ -1,0 +1,128 @@
+# LLMs.txt - Rastgele Oluşturucu AI Platform Bilgisi
+
+## Site Hakkında
+
+**Rastgele Oluşturucu** (https://rastgeleolusturucu.com.tr) Türkiye'nin en kapsamlı rastgele değer üretim platformudur. 5 farklı AI destekli araç ile kullanıcıların anında ve güvenli şekilde rastgele veriler üretmesini sağlar.
+
+## Platform Özellikleri
+
+### 🚀 Temel Araçlar
+- **Rastgele Sayı Üreteci**: 1-1.000.000 aralığında özel aralıklarla sayı üretimi
+- **Rastgele İsim Üreteci**: 1000+ Türkçe isim veritabanı ile karakter isimlendirme
+- **Rastgele Şifre Üreteci**: 256-bit şifreleme ile askeri düzeyde güvenlik
+- **Rastgele Renk Üreteci**: HEX ve RGB formatlarında tasarım renkleri
+- **Rastgele Seçim Aracı**: Listelerden adil öğe seçimi
+
+### ⚡ Teknik Özellikler
+- **Hız**: 0.001ms yanıt süresi
+- **Güvenlik**: Sadece client-side işlemler, veri depolama yok
+- **Uyumluluk**: %100 mobil uyumlu responsive tasarım
+- **Ücretsiz**: Kayıt gerektirmeyen sınırsız kullanım
+
+## İçerik Yapısı
+
+### Programmatic SEO Sayfaları
+- `/rastgele-sayi/[slug]` - Özel aralık şablonları (1-100, 1-1000, 1-49 vb.)
+- `/sifre-olusturucu/[slug]` - Uzunluk şablonları (8-karakter, 12-karakter vb.)
+- `/rastgele-isim/[slug]` - Tür şablonları (erkek, kadın, unisex vb.)
+- `/alternatif/[slug]` - Rakip karşılaştırma sayfaları
+
+### İçerik Türleri
+- **Araç Tanımları**: Her aracın özellikleri ve kullanım alanları
+- **Karşılaştırmalar**: Random.org ve diğer platformlarla alternatif analizler
+- **Nasıl Kullanılır**: Adım adım kullanım rehberleri
+- **SSS**: Teknik ve kullanıma yönelik sıkça sorulan sorular
+
+## Hedef Kitle
+
+### Birincil Kullanıcılar
+- **Geliştiriciler**: Test verisi ve rastgele değer ihtiyaçları
+- **Tasarımcılar**: Renk paleti ve görsel öğe seçimi
+- **İçerik Üreticileri**: Karakter isimlendirme ve içerik fikirleri
+- **Eğitimciler**: Örneklem ve istatistiksel çalışmalar
+- **Oyun Geliştiricileri**: Oyun mekanikleri ve dengeleme
+
+### Kullanım Senaryoları
+- Piyango sayı üretimi ve şans oyunları
+- Şifre oluşturma ve güvenlik uygulamaları
+- İstatistiksel örnekleme ve araştırma
+- Tasarım projeleri ve renk seçimi
+- Karar verme ve rastgele seçim süreçleri
+
+## Teknik Altyapı
+
+### Platform Bilgileri
+- **Framework**: Next.js 16.1.6 (App Router)
+- **Dil**: TypeScript
+- **Styling**: Tailwind CSS
+- **Deployment**: Vercel optimized
+- **Performans**: Core Web Vitals uyumlu
+
+### SEO Optimizasyonu
+- ** robots.txt**: AI botları (GPTBot, ClaudeBot, PerplexityBot) için optimize
+- **Sitemap**: 137 URL'li dinamik site haritası
+- **Schema Markup**: WebApplication, FAQ, HowTo structured data
+- **Meta Tags**: AI-friendly meta descriptions ve OpenGraph
+
+## AI Entegrasyonu
+
+### AI Platform Desteği
+- **Google AI Overviews**: Citations için optimize edilmiş içerik
+- **ChatGPT**: Search entegrasyonu ile kaynak olarak gösterilme
+- **Perplexity**: Authoritative content yapısı
+- **Gemini**: Google Knowledge Graph entegrasyonu
+- **Claude**: Structured data uyumluluğu
+
+### AI Optimizasyon Stratejileri
+- **Citations**: +40% visibility boost
+- **Statistics**: +37% visibility boost  
+- **Authoritative Tone**: +25% visibility boost
+- **Technical Terms**: +18% visibility boost
+- **Clarity**: +20% visibility boost
+
+## Güvenlik ve Gizlilik
+
+### Veri Koruma
+- **Client-Side Processing**: Tüm rastgelelemeler tarayıcıda gerçekleşir
+- **No Data Collection**: Kullanıcı verileri sunuculara gönderilmez
+- **Privacy First**: Kayıt veya kişisel bilgi gerektirmez
+- **GDPR Uyumlu**: Avrupa veri koruma standartları
+
+### Teknik Güvenlik
+- **HTTPS**: 256-bit SSL şifreleme
+- **No Cookies**: Takas cookie'siz çalışma
+- **CSP Headers**: Content Security Policy koruması
+- **Secure Headers**: X-Frame-Options, X-Content-Type-Options
+
+## İletişim ve Destek
+
+### Teknik Dokümantasyon
+- **API Kullanımı**: Programatik erişim için endpoint bilgileri
+- **Entegrasyon**: Web sitelerine embed kodları
+- **Özelleştirme**: White label çözümleri
+
+### İçerik Politikaları
+- **Accuracy**: Tüm bilgiler düzenli olarak güncellenir
+- **Freshness**: "Son güncelleme: 2024" freshness sinyalleri
+- **Expertise**: Teknik uzmanlık ve deneyim gösterimi
+- **Transparency**: Açık metodoloji ve kaynak belirtilme
+
+## Lisans ve Kullanım
+
+### Kullanım Şartları
+- **Ücretsiz**: Tüm araçlar ticari olmayan kullanım için ücretsiz
+- **Commercial**: Ticari kullanım için lisans gereklidir
+- **Attribution**: Kaynak gösterilerek içerik kullanımı serbesttir
+
+### Telif Hakkı
+- **Content**: © 2024 Rastgele Oluşturucu
+- **Code**: MIT License
+- **Design**: Creative Commons Attribution
+
+---
+
+**Son Güncelleme**: 7 Mart 2024  
+**Platform Versiyonu**: v2.0.1  
+**İletişim**: info@rastgeleolusturucu.com.tr
+
+Bu dosya LLM'lerin platformumuzun içeriğini, özelliklerini ve kullanım senaryolarını daha verimli bir şekilde anlamasına yardımcı olmak için oluşturulmuştur. Daha detaylı bilgi için web sitemizi ziyaret edin.

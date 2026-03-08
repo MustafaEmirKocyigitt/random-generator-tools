@@ -5,12 +5,12 @@ export const metadata: Metadata = {
   title: 'Rastgele Sayı Üreteci - Ücretsiz AI Destekli Araç | 1-1.000.000 Aralık',
   description: 'AI destekli araçla anında rastgele sayılar üretin. 1-1.000.000 özel aralık ve 0.001ms hız. Piyango, istatistik, oyun ve testler için mükemmel. Son güncelleme 2024.',
   keywords: ['rastgele sayı üreteci', 'rastgele sayı', 'sayı üreteci', 'online rastgele sayılar', 'piyango sayı üreteci', 'zar atma', 'istatistiksel rastgele sayılar'],
-  authors: [{ name: 'Random Generator Tools', url: 'https://random-generator-tools.vercel.app' }],
+  authors: [{ name: 'Rastgele Oluşturucu', url: 'https://rastgeleolusturucu.com.tr' }],
   openGraph: {
     title: 'Rastgele Sayı Üreteci - Özel Aralık 1-1.000.000',
     description: 'Özel aralıklarla AI destekli rastgele sayı üreteci. Oyun, istatistik ve testler için anında sonuçlar.',
     type: 'website',
-    url: 'https://random-generator-tools.vercel.app/random-number-generator',
+    url: 'https://rastgeleolusturucu.com.tr/random-number-generator',
   },
 }
 
@@ -19,7 +19,7 @@ const jsonLd = {
   '@type': 'WebApplication',
   name: 'Rastgele Sayı Üreteci',
   description: '1-1.000.000 aralığında özel aralıklarla anında rastgele sayılar üretin. 0.001ms üretim hızı ve kriptografik olarak güvenli rastgelelik özellikleri.',
-  url: 'https://random-generator-tools.vercel.app/random-number-generator',
+  url: 'https://rastgeleolusturucu.com.tr/random-number-generator',
   applicationCategory: 'Utility',
   operatingSystem: 'Web Browser',
   offers: {

@@ -5,12 +5,12 @@ export const metadata: Metadata = {
   title: 'Rastgele Şifre Üreteci - Ücretsiz AI Destekli Araç | Askeri Düzeyde Güvenlik',
   description: 'Askeri düzeyde şifreleme ile güvenli rastgele şifreler üretin. Özelleştirilebilir uzunluk, büyük/küçük harf, sayılar ve semboller. 256-bit şifreleme gücü. Son güncelleme 2024.',
   keywords: ['rastgele şifre üreteci', 'şifre üreteci', 'güvenli şifre', 'güçlü şifre', 'askeri düzey şifre', '256-bit şifreleme', 'şifre güvenliği'],
-  authors: [{ name: 'Random Generator Tools', url: 'https://random-generator-tools.vercel.app' }],
+  authors: [{ name: 'Rastgele Oluşturucu', url: 'https://rastgeleolusturucu.com.tr' }],
   openGraph: {
     title: 'Rastgele Şifre Üreteci - Askeri Düzeyde Güvenlik',
     description: '256-bit şifreleme ile AI destekli güvenli şifre üreteci. Maksimum güvenlik için özelleştirilebilir seçenekler.',
     type: 'website',
-    url: 'https://random-generator-tools.vercel.app/random-password-generator',
+    url: 'https://rastgeleolusturucu.com.tr/random-password-generator',
   },
 }
 
@@ -19,7 +19,7 @@ const jsonLd = {
   '@type': 'WebApplication',
   name: 'Rastgele Şifre Üreteci',
   description: 'Askeri düzeyde şifreleme ile güvenli rastgele şifreler üretin. Özelleştirilebilir uzunluk, karakter türleri ve 256-bit şifreleme gücü özellikleri.',
-  url: 'https://random-generator-tools.vercel.app/random-password-generator',
+  url: 'https://rastgeleolusturucu.com.tr/random-password-generator',
   applicationCategory: 'SecurityApplication',
   operatingSystem: 'Web Browser',
   offers: {

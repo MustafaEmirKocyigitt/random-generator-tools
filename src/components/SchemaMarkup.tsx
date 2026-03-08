@@ -7,7 +7,7 @@ const webApplicationSchema = {
   '@type': 'WebApplication',
   name: 'Rastgele Üreteç Araçları',
   description: 'Rastgele sayılar, isimler, şifreler, renkler ve daha fazlasını AI destekli araçlarımızla üretin. Hızlı, güvenli ve ücretsiz online rastgele üreteçler.',
-  url: 'https://random-generator-tools.com',
+  url: 'https://rastgeleolusturucu.com.tr',
   applicationCategory: 'UtilityApplication',
   operatingSystem: 'Web Browser',
   offers: {
@@ -37,25 +37,25 @@ const howToSchema = {
   '@type': 'HowTo',
   name: 'Rastgele Sayı Nasıl Üretilir',
   description: 'Rastgele sayı üreteci kullanarak belirlediğiniz aralıkta sayılar üretin',
-  image: 'https://random-generator-tools.com/og-image.jpg',
+  image: 'https://rastgeleolusturucu.com.tr/og-image.jpg',
   step: [
     {
       '@type': 'HowToStep',
       name: 'Minimum ve maksimum değerleri girin',
       text: 'Rastgele sayı için alt ve üst sınır değerlerini belirleyin',
-      image: 'https://random-generator-tools.com/step1.jpg'
+      image: 'https://rastgeleolusturucu.com.tr/step1.jpg'
     },
     {
       '@type': 'HowToStep',
       name: 'Üret butonuna tıklayın',
       text: 'Rastgele sayı üretmek için butona tıklayın',
-      image: 'https://random-generator-tools.com/step2.jpg'
+      image: 'https://rastgeleolusturucu.com.tr/step2.jpg'
     },
     {
       '@type': 'HowToStep',
       name: 'Sonucu kopyalayın',
       text: 'Üretilen rastgele sayıyı kopyalayarak kullanabilirsiniz',
-      image: 'https://random-generator-tools.com/step3.jpg'
+      image: 'https://rastgeleolusturucu.com.tr/step3.jpg'
     }
   ],
   tool: [
@@ -112,13 +112,13 @@ const breadcrumbSchema = {
       '@type': 'ListItem',
       position: 1,
       name: 'Ana Sayfa',
-      item: 'https://random-generator-tools.com'
+      item: 'https://rastgeleolusturucu.com.tr'
     },
     {
       '@type': 'ListItem',
       position: 2,
       name: 'Rastgele Araçlar',
-      item: 'https://random-generator-tools.com/tools'
+      item: 'https://rastgeleolusturucu.com.tr/tools'
     }
   ]
 };

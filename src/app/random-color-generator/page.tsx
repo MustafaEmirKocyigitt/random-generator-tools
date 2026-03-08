@@ -5,12 +5,12 @@ export const metadata: Metadata = {
   title: 'Rastgele Renk Üreteci - Ücretsiz AI Destekli Araç | HEX ve RGB Değerleri',
   description: 'HEX ve RGB değerleri ile anında rastgele renkler üretin. Tasarımcılar, geliştiriciler ve sanatçılar için mükemmel. AI destekli renk paletleri ve anında önizleme. Son güncelleme 2024.',
   keywords: ['rastgele renk üreteci', 'renk üreteci', 'hex renk', 'rgb renk', 'rastgele renkler', 'renk paleti üreteci', 'tasarım araçları'],
-  authors: [{ name: 'Random Generator Tools', url: 'https://random-generator-tools.vercel.app' }],
+  authors: [{ name: 'Rastgele Oluşturucu', url: 'https://rastgeleolusturucu.com.tr' }],
   openGraph: {
     title: 'Rastgele Renk Üreteci - HEX ve RGB Değerleri',
     description: 'HEX ve RGB değerleri ile AI destekli rastgele renk üreteci. Tasarımcılar ve geliştiriciler için mükemmel.',
     type: 'website',
-    url: 'https://random-generator-tools.vercel.app/random-color-generator',
+    url: 'https://rastgeleolusturucu.com.tr/random-color-generator',
   },
 }
 
@@ -19,7 +19,7 @@ const jsonLd = {
   '@type': 'WebApplication',
   name: 'Rastgele Renk Üreteci',
   description: 'HEX ve RGB değerleri ile anında rastgele renkler üretin. Tasarımcılar ve geliştiriciler için AI destekli renk önerileri ve anında görsel önizleme özellikleri.',
-  url: 'https://random-generator-tools.vercel.app/random-color-generator',
+  url: 'https://rastgeleolusturucu.com.tr/random-color-generator',
   applicationCategory: 'DesignApplication',
   offers: {
     '@type': 'Offer',

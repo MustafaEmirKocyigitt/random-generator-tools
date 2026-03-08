@@ -172,7 +172,7 @@ export default function PasswordTemplatePage({ params }: PasswordTemplatePagePro
               <div className="mt-4">
                 <div className="text-sm text-gray-600 mb-2">Şifre Gücü:</div>
                 <div className="w-full bg-gray-200 rounded-full h-2">
-                  <div id="strengthBar" className="bg-green-600 h-2 rounded-full" style={{width: '80%'}}></div>
+                  <div id="strengthBar" className="bg-green-600 h-2 rounded-full strength-bar-80"></div>
                 </div>
               </div>
             </div>

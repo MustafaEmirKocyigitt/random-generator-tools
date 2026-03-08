@@ -12,7 +12,7 @@ export default function Navigation() {
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center pr-8 border-r border-cyan-500/30">
             <Link href="/" className="text-2xl font-bold text-cyan-400 font-jetbrains-mono neon-glow tracking-wider">
-              [RANDOM_TOOLS]
+              Rastgele Araçlar
             </Link>
             <div className="ml-4 flex items-center space-x-2">
               <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>

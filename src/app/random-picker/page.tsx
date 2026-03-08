@@ -5,12 +5,12 @@ export const metadata: Metadata = {
   title: 'Rastgele Seçim Aracı - Ücretsiz AI Destekli Araç | Anında Karar Verme',
   description: 'Listenizden anında rastgele öğeler seçin. Çekilişler, yarışmalar, karar verme ve rastgele seçim için mükemmel. AI destekli adil seçim algoritması. Son güncelleme 2024.',
   keywords: ['rastgele seçim aracı', 'rastgele seçici', 'isim çarkı', 'rastgele seçim', 'karar verici', 'çekiliş seçici', 'yarışma kazananı seçici'],
-  authors: [{ name: 'Random Generator Tools', url: 'https://random-generator-tools.vercel.app' }],
+  authors: [{ name: 'Rastgele Oluşturucu', url: 'https://rastgeleolusturucu.com.tr' }],
   openGraph: {
     title: 'Rastgele Seçim Aracı - Anında Karar Verme',
     description: 'Çekilişler, yarışmalar ve karar verme için AI destekli rastgele seçici. Adil ve anında sonuçlar.',
     type: 'website',
-    url: 'https://random-generator-tools.vercel.app/random-picker',
+    url: 'https://rastgeleolusturucu.com.tr/random-picker',
   },
 }
 
@@ -19,7 +19,7 @@ const jsonLd = {
   '@type': 'WebApplication',
   name: 'Rastgele Seçim Aracı',
   description: 'AI destekli adil seçim algoritması ile listenizden anında rastgele öğeler seçin. Çekilişler, yarışmalar, karar verme ve rastgele seçim için mükemmel.',
-  url: 'https://random-generator-tools.vercel.app/random-picker',
+  url: 'https://rastgeleolusturucu.com.tr/random-picker',
   applicationCategory: 'Utility',
   operatingSystem: 'Web Browser',
   offers: {

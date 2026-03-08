@@ -35,3 +35,6 @@ Allow: /
 
 # Sitemap
 Sitemap: https://rastgeleolusturucu.com.tr/sitemap.xml
+
+# LLM Documentation
+Sitemap: https://rastgeleolusturucu.com.tr/llms.txt

@@ -22,7 +22,7 @@ export default function RandomNameGenerator() {
     <div className="min-h-screen flex items-center justify-center p-4 relative overflow-hidden pt-24">
       <div className="absolute inset-0">
         <div className="absolute top-20 left-20 w-72 h-72 bg-cyan-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse"></div>
-        <div className="absolute bottom-20 right-20 w-72 h-72 bg-purple-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse" style={{ animationDelay: '2s' }}></div>
+        <div className="absolute bottom-20 right-20 w-72 h-72 bg-purple-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse animation-delay-2s"></div>
       </div>
       
       <div className="max-w-4xl w-full relative z-10">
@@ -228,7 +228,7 @@ export default function RandomNameGenerator() {
         
         {/* Floating elements */}
         <div className="absolute -top-4 -right-4 w-8 h-8 bg-cyan-500 rounded-full opacity-60 animate-pulse"></div>
-        <div className="absolute -bottom-4 -left-4 w-6 h-6 bg-purple-500 rounded-full opacity-60 animate-pulse" style={{ animationDelay: '1s' }}></div>
+        <div className="absolute -bottom-4 -left-4 w-6 h-6 bg-purple-500 rounded-full opacity-60 animate-pulse animation-delay-1s"></div>
       </div>
     </div>
   )
